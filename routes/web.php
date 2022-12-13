@@ -27,7 +27,5 @@ Route::get('/contracts', function () {
 
 Route::get('/contract/{id}', function ($id) {
     $contract = DB::select('call prc_contract_status_v2(?)',[$id]);
-    return response()->json([
-        'contract' => view('contract')->with('contract',$contract)->render()
-    ]);
+    return Response::make(['data'=>($contract)]);
 });
