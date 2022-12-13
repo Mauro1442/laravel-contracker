@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/dbconn', function () {
     return view('dbconn');
 });
+
+Route::get('/contract', function () {
+    return view('contract');
+});
