@@ -21,6 +21,13 @@ Route::get('/dbconn', function () {
     return view('dbconn');
 });
 
-Route::get('/contract', function () {
-    return view('contract');
+Route::get('/contracts', function () {
+    return view('contracts');
+});
+
+Route::get('/contract/{id}', function ($id) {
+    $contract = DB::select('call prc_contract_status_v2(?)',[$id]);
+    return response()->json([
+        'contract' => view('contract')->with('contract',$contract)->render()
+    ]);
 });
