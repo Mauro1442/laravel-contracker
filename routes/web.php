@@ -37,7 +37,7 @@ Route::get('/contract/{id}', function ($id) {
     }*/
     Request::server('HTTP_ACCEPT_LANGUAGE');
 
-    $contract = DB::select('call prc_contract_status_v2(?)',[$id]);
+    $contract = DB::select('call prc_contract_status_v3(?)',[$id]);
 
 
     return $contract[0]->{'result'};
