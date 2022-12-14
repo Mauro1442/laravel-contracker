@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 use DB;
+use Request;
+use Config;
 
 class ContractController extends Controller {
 
@@ -16,6 +18,8 @@ class ContractController extends Controller {
 
     public function search()
     {
+        $lang = Request::server('HTTP_ACCEPT_LANGUAGE');
+
         $parsedUrl = parse_url($_SERVER['REQUEST_URI']);
 
         $token= str_replace("token=", "",$parsedUrl['query']);
