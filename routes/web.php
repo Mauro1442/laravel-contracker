@@ -21,12 +21,7 @@ Route::get('/dbconn', function () {
     return view('dbconn');
 });
 
-Route::get('/contracts', function () {
-    return view('contracts');
-});
-
 Route::get('/contract/{id}', function ($id) {
-
 
     //$locale = $request->header('Accept-Language');
 
@@ -39,8 +34,6 @@ Route::get('/contract/{id}', function ($id) {
 
     $contract = DB::select('call prc_contract_status_v3(?)',[$id]);
 
-
     return $contract[0]->{'result'};
-    //return ($contract[0])['result'];
 
 });
