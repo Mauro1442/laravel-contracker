@@ -12,6 +12,10 @@
                 <?php
                     if (DB::connection()->getPDO()) {
                         echo "Database is connected. Database Name is : " . DB::connection()->getDatabaseName();
+                        
+                        echo  ' Language is: '. app()->getLocale();
+
+                
                     }
                 ?>
         </div>

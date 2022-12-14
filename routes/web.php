@@ -26,6 +26,21 @@ Route::get('/contracts', function () {
 });
 
 Route::get('/contract/{id}', function ($id) {
+
+
+    //$locale = $request->header('Accept-Language');
+
+  //  DB::select('SET @API_LANG :="$locale"');
+    
+   /* if (App::isLocale('en')) {
+        
+    }*/
+    Request::server('HTTP_ACCEPT_LANGUAGE');
+
     $contract = DB::select('call prc_contract_status_v2(?)',[$id]);
-    return Response::make(['data'=>($contract)]);
+
+
+    return $contract[0]->{'result'};
+    //return ($contract[0])['result'];
+
 });
