@@ -18,7 +18,6 @@ class ContractController extends Controller {
 
     public function search()
     {
-        $lang = Request::server('HTTP_ACCEPT_LANGUAGE');
 
         $parsedUrl = parse_url($_SERVER['REQUEST_URI']);
 
@@ -26,6 +25,7 @@ class ContractController extends Controller {
 
         $contract = DB::select('call prc_contract_status_v3(?)',[$token]);
 
-        return response()->json([$contract[0]->{'result'}][0]); 
+        return [$contract[0]->{'result'}][0]; 
+
     }
 }
