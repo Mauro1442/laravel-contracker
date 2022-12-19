@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use Closure;
-//use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
 class SetApiLang {
@@ -13,13 +12,11 @@ class SetApiLang {
     $lang = $request->server('HTTP_ACCEPT_LANGUAGE');
 
     if (str_starts_with($lang, 'de')) {
-        \Config::set('database.locale', $lang);
-        \App::setLocale($lang);
+      \DB::select('SET @API_LANG :="de"');
     } else {
-        \Config::set('database.default', 'en');
-        \App::setLocale('en');
+      \DB::select('SET @API_LANG :="en"');
     }
-    
+
     return $next($request);
   }
 }
