@@ -25,7 +25,7 @@ class ContractController extends Controller {
 
         $contract = DB::select('call prc_contract_status_v3(?)',[$token]);
 
-        return [$contract[0]->{'result'}][0]; 
+        return response([$contract[0]->{'result'}][0])->header('Content-Type', 'application/json');
 
     }
 }

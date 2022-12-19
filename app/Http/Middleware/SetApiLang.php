@@ -14,9 +14,9 @@ class SetApiLang {
 
     if (str_starts_with($lang, 'de')) {
         \Config::set('database.locale', $lang);
-        \App::setLocale('de');
+        \App::setLocale($lang);
     } else {
-     //   \Config::set('database.default', 'en');
+        \Config::set('database.default', 'en');
         \App::setLocale('en');
     }
     
