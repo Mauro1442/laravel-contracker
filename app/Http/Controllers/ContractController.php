@@ -17,14 +17,9 @@ class ContractController extends Controller {
 
     public function search()
     {
-
         $parsedUrl = parse_url($_SERVER['REQUEST_URI']);
-
         $token= str_replace("token=", "",$parsedUrl['query']);
-
         $contract = DB::select('call prc_contract_status_v2(?)',[$token]);
-
         return response([$contract[0]->{'result'}][0])->header('Content-Type', 'application/json');
-
     }
 }
