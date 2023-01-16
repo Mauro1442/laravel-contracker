@@ -23,5 +23,4 @@ class SetApiLang {
     return $next($request);
   }
 
-  
 }
