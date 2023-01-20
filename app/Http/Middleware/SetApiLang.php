@@ -14,12 +14,9 @@ class SetApiLang {
     if (str_starts_with($lang, 'de')) {
 
       \DB::select('SET @API_LANG :="de"');
-      
     } else {
-
       \DB::select('SET @API_LANG :="en"');
     }
-
     return $next($request);
   }
 
